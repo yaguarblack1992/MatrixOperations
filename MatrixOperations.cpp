@@ -63,6 +63,7 @@ int main() {
 		// calculate gradient
 		mx grad = out2 - target;
 		// show MSE
+		if (i % 100 == 0)
 		std::cout << "Iteration " << i << " MSE= " << grad.array().square().sum() << '\n';
 		// calculate delta in each steps
 
@@ -97,6 +98,7 @@ int main() {
 		// calculate gradient
 		mx grad = out2 - target;
 		// show MSE
+		if(i%100 == 0)
 		std::cout << "Iteration " << i << " MSE= " << grad.array().square().sum() << '\n';
 		// calculate delta in each steps
 
