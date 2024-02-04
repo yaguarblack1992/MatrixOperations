@@ -14,3 +14,4 @@ Eigen::MatrixXd convolve_multiply(const Eigen::MatrixXd& input, const Eigen::Mat
 Eigen::MatrixXd gradientTransfer(const mx& kernel, const mx& gradient);
 Eigen::MatrixXd deltaKernel(mx& input, mx& kernel, mx& grad);
 
+Eigen::MatrixXd learnKernel(mx& input, mx& kernel, mx& target, int iterations = 500, double eta=0.01);

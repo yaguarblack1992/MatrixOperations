@@ -100,3 +100,19 @@ Eigen::MatrixXd deltaKernel(mx& input, mx& kernel, mx& grad) {
 	auto delta_reshaped = modifyReshapedToMatrix(delta_transposed, kernel);
 	return delta_reshaped;
 }
+
+Eigen::MatrixXd learnKernel(mx& input, mx& kernel, mx& target,int iterations,double eta) {
+
+	mx kern = kernel;
+	for (int i = 0; i < iterations; i++) {
+		// perform convolution
+		mx convolved = convolve(input, kern);
+		mx grad = convolved - target;
+		// calculate delta 
+		mx delta = deltaKernel(input, kern, grad);
+		// update kernel
+		kern = kern - delta * eta;
+	}
+	//return learned kernel value
+	return kern;
+}
